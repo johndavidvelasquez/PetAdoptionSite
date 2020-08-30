@@ -1,0 +1,27 @@
+// Imports for Angular Material Theming
+@import '~@angular/material/theming';
+@include mat-core();
+
+// Light theme
+$light-primary: mat-palette($mat-blue);
+$light-accent:  mat-palette($mat-blue-gray, A700, A700, A700);
+$light-theme:   mat-light-theme($light-primary, $light-accent);
+
+// Dark theme
+$dark-primary: mat-palette($mat-blue-gray);
+$dark-accent:  mat-palette($mat-pink, A700, A100, A100);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$InventorySystem-light-theme: mat-light-theme($light-primary, $light-accent);
+$InventorySystem-dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+@include angular-material-theme($light-theme);
+.switch-dark-theme {
+  @include angular-material-theme($dark-theme); 
+}
