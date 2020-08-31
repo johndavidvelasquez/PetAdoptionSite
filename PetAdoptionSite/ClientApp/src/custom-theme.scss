@@ -4,7 +4,7 @@
 
 // Light theme
 $light-primary: mat-palette($mat-blue);
-$light-accent:  mat-palette($mat-blue-gray, A700, A700, A700);
+$light-accent:  mat-palette($mat-green, A700, A700, A700);
 $light-theme:   mat-light-theme($light-primary, $light-accent);
 
 // Dark theme
