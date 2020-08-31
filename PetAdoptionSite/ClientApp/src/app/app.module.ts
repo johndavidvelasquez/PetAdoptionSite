@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonserviceService } from './services/commonservice.service'
 
 //Routes
 import { AppRoutingModule, routingCompontents } from './app-routing/app-routing.module';
@@ -11,13 +12,14 @@ import { AppMaterialModule} from './app-material/app-material.module'
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { FindComponent } from './find/find.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent, 
-    routingCompontents
+    routingCompontents, FindComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,7 +28,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     AppMaterialModule,    
     AppRoutingModule,  
   ],
-  providers: [],
+  providers: [CommonserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
