@@ -30,8 +30,7 @@ namespace PetAdoptionSite
             });
 
             services.AddDbContext<PetAdoptionSiteContext>(options =>
-                options.UseSqlServer(
-                    "Data Source = DESKTOP-6V2N32E\\SQLEXPRESS; Initial Catalog = PetAdoptionSite; Integrated Security = SSPI;"));
+                options.UseSqlServer(Configuration.GetConnectionString("PetAdoptionSite")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
