@@ -13,13 +13,14 @@ import { AppMaterialModule} from './app-material/app-material.module'
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FindComponent } from './find/find.component';
+import { PostComponent } from './logged-in/post/post.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent, 
-    routingCompontents, FindComponent
+    routingCompontents, FindComponent, PostComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
