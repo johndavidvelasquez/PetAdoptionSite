@@ -1,9 +1,11 @@
+
 export interface IPetPost {
-    Id: number,
-    PetTypeId: number,
-    PetTypeSubId: number,
-    Description: string,
-    UserId: number,
-    CreatedOn: Date,
-    UpdatedOn: Date,
+    id: number,
+    petTypeId: number,
+    petTypeSubId: number,
+    description: string,
+    userId: number,
+    createdOn: Date,
+    updatedOn: Date,
 }
+

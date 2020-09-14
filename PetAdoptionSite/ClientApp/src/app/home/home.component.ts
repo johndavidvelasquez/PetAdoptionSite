@@ -1,33 +1,28 @@
 import { Component } from '@angular/core';
+import { CommonserviceService } from '../services/commonservice.service';
+import { PetpostService } from '../services/petpost.service';
+import { dashCaseToCamelCase } from '@angular/compiler/src/util';
+import { IPetPost } from 'src/app/model/petpost';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles:[`
-    .example-header-image {
-      background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-      background-size: cover;
-    }
-    .example-card
-    {
-      margin:5px;
-    }
-    .header
-    {
-      background: #1A6900;
-      width:100%;
-      color:white;
-      padding:20px;
-      padding-bottom:1px;
-    }
-    .content
-    {
-      padding:0;
-      border: 1px solid black;
-      width:100em;
-      margin:0;
-    }
-  `]
+  styleUrls:['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent{
+
+  public regions = [];
+  public pets: IPetPost[];
+
+  constructor(private _petsService: PetpostService) {}
+
+   ngOnInit() {
+
+    this._petsService.getPetPosts().subscribe(result => {
+      this.pets = result;
+      console.log(this.pets);
+    });
+  }
+
 }
