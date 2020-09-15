@@ -8,7 +8,8 @@
   }
   .header
   {
-    background: #1A6900;
+    background: rgb(64,208,130);
+    background: linear-gradient(128deg, rgba(64,208,130,1) 0%, rgba(38,240,173,1) 100%);
     width:100%;
     color:white;
     padding:20px;

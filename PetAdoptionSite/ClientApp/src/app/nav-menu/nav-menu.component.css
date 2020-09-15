@@ -20,7 +20,8 @@ html {
   z-index: 100;
   top: 0;
   color: white;
-  background: #1A6900;
+  background: rgb(64,208,130);
+background: linear-gradient(128deg, rgba(64,208,130,1) 0%, rgba(38,240,173,1) 100%);
 }
 
 .nav-spacer {
@@ -48,7 +49,7 @@ html {
 {
   font-size: 14px;
   border-radius: 2px 0px 0px 2px;
-  background:#5F964D;
+  background:#33C23D;
   border:0;
   color:white;
   cursor: pointer;
@@ -67,7 +68,7 @@ html {
 }
 .search button
 {
-  background:#568745;
+  background:#33C23D;
   color:white;
   height: 34px;
   border:0;

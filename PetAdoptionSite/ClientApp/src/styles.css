@@ -18,8 +18,8 @@ code {
 html, body { height: 100%; }
 body { 
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
-  background: #D0E3CA;
-}
+  background: #f5f5f5;
+} 
 
 *:focus {
   outline: none !important;

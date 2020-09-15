@@ -1,4 +1,20 @@
-<p>find works!</p>
-<li *ngFor="let region of regions">
-    {{ region.name }}
-</li>
+<div class="container-fuild">
+
+    <div class = "container-fluid header" >
+      <div class="spacer"></div>
+      <div class="container-fluid">
+        <h1 class="">Pets Near Me</h1>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top:20px">
+        <h4>Basic mat-select</h4>
+        <mat-form-field appearance="fill" color = "accent">
+            <mat-label>Select Region</mat-label>
+            <mat-select >    
+                <mat-option value="" *ngFor="let region of regions" > {{ region.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>     
+    </div>
+
+</div>

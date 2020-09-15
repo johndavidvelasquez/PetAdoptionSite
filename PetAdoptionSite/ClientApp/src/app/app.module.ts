@@ -8,19 +8,19 @@ import { CommonserviceService } from './services/commonservice.service'
 import { AppRoutingModule, routingCompontents } from './app-routing/app-routing.module';
 
 //Material
-import { AppMaterialModule} from './app-material/app-material.module'
+import { AppMaterialModule} from './app-material/app-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { FindComponent } from './find/find.component';
-import { PostComponent } from './logged-in/post/post.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent, 
-    routingCompontents, FindComponent, PostComponent
+    routingCompontents,  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,6 +28,7 @@ import { PostComponent } from './logged-in/post/post.component';
     FormsModule,
     AppMaterialModule,    
     AppRoutingModule,  
+    BrowserAnimationsModule
   ],
   providers: [CommonserviceService],
   bootstrap: [AppComponent]
