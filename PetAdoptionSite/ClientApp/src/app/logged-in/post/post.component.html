@@ -1,5 +1,63 @@
-<ul>
-    <li *ngFor="let petPost of petPosts">
-      {{ petPost.Description }}asdf
-    </li>
-</ul> 
+<div class="container-fuild">
+
+  <div class = "container-fluid header" >
+    <div class="spacer"></div>
+    <div class="container-fluid">
+      <h1 class="">Post pet for adoption</h1>
+    </div>
+  </div>
+
+  <div class = "container" style="margin-top:20px">
+      <!-- <ul>
+        <li *ngFor="let petPost of petPosts">
+          {{ petPost.description }}
+        </li>
+      </ul>   -->
+      
+      <!-- <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Outline form field</mat-label>
+          <input matInput placeholder="Placeholder">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p> -->
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Pet Name (Optional)</mat-label>
+          <input matInput placeholder="Pet Name">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Pet Type</mat-label>
+          <mat-select (change)="selectOption($event.target.value)">
+            <mat-option value="option" *ngFor="let opt of petTypes" [value]="opt.id">
+              {{opt.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Pet Type</mat-label>
+          <mat-select>
+            <mat-option value="option" *ngFor="let opt of petTypes" [value]="opt.id">
+              {{opt.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </p>
+  </div>
+
+
+
+</div>
