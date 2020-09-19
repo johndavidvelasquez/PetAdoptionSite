@@ -3,6 +3,8 @@ import { PetpostService } from 'src/app/services/petpost.service'
 import { IPetPost } from 'src/app/model/petpost';
 import { IPetType } from 'src/app/model/pettype';
 import { IPetSubtype } from 'src/app/model/petsubtype';
+import { FormGroup, FormBuilder, Validators, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -10,13 +12,18 @@ import { IPetSubtype } from 'src/app/model/petsubtype';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  public petPosts: IPetPost[] = [];
-  public petTypes: IPetType[] = [];
-  public petSubtypes: IPetSubtype[] = [];
+  petPosts: IPetPost[] = [];
+  petTypes: IPetType[] = [];
+  petSubtypes: IPetSubtype[] = [];
+  subTypedata: IPetSubtype[] = [];
 
-  constructor(private petpostService: PetpostService) { }
+  formGroup: FormGroup;
+
+  constructor(private petpostService: PetpostService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+
+    this.createForm();
 
     this.petpostService.getPetPosts().subscribe(result => {
       this.petPosts = result;                  
@@ -30,10 +37,33 @@ export class PostComponent implements OnInit {
       this.petSubtypes = result;                  
     });
 
+    // this.petPostForm = this.formBuilder.group({
+    //   fullName: [''],  
+    //   email: [''],
+    //   message: ['']
+    // });
+
   }
 
-  selectOption(id: number) {
+  createForm() {
+    this.formGroup = this.formBuilder.group({
+      //'name': [null, Validators.required],
+      'petType': [null, Validators.required],
+      'petSubtype': [null],
+      'description': [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+    });
+  }
 
+  selectOption(value:number) {
+    this.subTypedata = this.petSubtypes.filter(item => item.petTypeId === value);
+    console.log(this.subTypedata);
+  }
+
+  onSubmit(post) {
+    this.petpostService.postPetPosts(post).subscribe(result => {
+      //Insert dialog boxes
+      this.router.navigateByUrl('/');
+    }, error => console.error(error));
   }
 
 }
