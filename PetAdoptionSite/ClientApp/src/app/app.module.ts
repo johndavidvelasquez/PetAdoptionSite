@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -20,7 +21,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
   declarations: [
     AppComponent,
     NavMenuComponent, 
-    routingCompontents,  
+    routingCompontents, SignupComponent,  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

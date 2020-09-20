@@ -7,6 +7,7 @@ import { CounterComponent } from '../counter/counter.component';
 import { FetchDataComponent } from '../fetch-data/fetch-data.component';
 import { FindComponent } from '../find/find.component';
 import { PostComponent } from '../logged-in/post/post.component';
+import { SignupComponent } from '../signup/signup.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'fetch-data', component: FetchDataComponent },
     { path: 'find', component: FindComponent },
     { path: 'post', component: PostComponent },
+    { path: 'signup', component: SignupComponent },
 ]; 
 
 @NgModule({
@@ -27,5 +29,6 @@ export const routingCompontents = [
     CounterComponent,
     FetchDataComponent,
     FindComponent,
-    PostComponent
+    PostComponent,
+    SignupComponent
 ]

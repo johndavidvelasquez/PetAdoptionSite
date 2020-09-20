@@ -3,7 +3,7 @@ import { PetpostService } from 'src/app/services/petpost.service'
 import { IPetPost } from 'src/app/model/petpost';
 import { IPetType } from 'src/app/model/pettype';
 import { IPetSubtype } from 'src/app/model/petsubtype';
-import { FormGroup, FormBuilder, Validators, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -48,8 +48,8 @@ export class PostComponent implements OnInit {
   createForm() {
     this.formGroup = this.formBuilder.group({
       //'name': [null, Validators.required],
-      'petType': [null, Validators.required],
-      'petSubtype': [null],
+      'petTypeId': [null, Validators.required],
+      'petSubTypeId': [null],
       'description': [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
   }

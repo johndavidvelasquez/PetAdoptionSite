@@ -4,8 +4,15 @@ export interface IRegion {
     key: string
 }
 
-export interface IRegion {
+export interface IProvinces {
     name: string,
     region: string,
     key: string
 }
+
+export interface ICities {
+    name: string,
+    province: string,
+    city: boolean
+}
+
