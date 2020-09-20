@@ -1,10 +1,14 @@
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
-  .example-card
+  .pet-card
   {
     margin:5px;
+    padding:0px;
+    margin-bottom:15px;
+    padding-bottom:20px;
+    transition: .4s;
+  }
+  .title
+  {
+    font-weight: 100;
   }
   .header
   {
@@ -14,6 +18,7 @@
     color:white;
     padding:20px;
     padding-bottom:1px;
+    margin:0;
   }
   .content
   {
@@ -21,4 +26,110 @@
     border: 1px solid black;
     width:100em;
     margin:0;
+  }
+  .pet-card-header
+  { 
+    padding-top:10px;
+    background: rgb(245,209,89);
+    transition: .4s;
+  }
+  .pet-card:hover .pet-card-header
+  {
+    background: #FFAB1A;
+  }
+  .pet-card-petType, .pet-card-petSubType
+  {
+    color:white !important;
+  }
+  .pet-card-image
+  {
+    display: inline-block;
+    position: relative;
+    padding-top: 100%;
+    margin-bottom: 0;
+  }
+  .pet-image
+  {
+    background: url('https://material.angular.io/assets/img/examples/shiba2.jpg') 20% 20% no-repeat;
+    background-size: cover;
+    border-radius: 250px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:15px;
+    border:8px solid #F5C937;
+    transition: .4s;
+  }
+  .pet-card:hover .pet-image
+  {
+    border-color: #FFAB1A;
+  }
+
+  .pet-card:hover 
+  {
+    cursor:pointer;
+    box-shadow: 0px 10px 20px -5px rgba(0,0,0,.3);
+    border-color: #FFAB1A;
+  }
+
+  .pet-card-image img
+  {
+    height: 100%;
+    border-radius: 300px;
+  }
+  .pet-card-desc
+  {
+    height: 70px;
+    padding:8px 10px;
+    color:rgba(0,0,0,.5);
+    border:2px solid #F5CF51;
+    border-radius:5px;
+    margin:0px 10px;
+    position: relative;
+    font-weight: 500;
+    transition: .4s;
+  }
+  p
+  {
+    max-height:50px ;
+    text-overflow: ellipsis; 
+    overflow: hidden;
+  }
+  .pet-card-desc::after
+  {
+    content:"Pet Description";
+    position:absolute;
+    background: white;
+    padding:0px 5px;
+    color: #F5CF51;
+    top:-10px;
+    left:20;
+    font-size: 12px;
+    transition: .4s;
+    
+  }
+  .pet-card-petName h1
+  {
+    position: absolute;
+    top:-8px;
+    left:15px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    color:#767676;
+  }
+  .pet-card-petName
+  {
+    position: relative;
+    height: 40px;
+  }
+  .pet-card-actions
+  {
+    padding:10px 20px;
+  }
+  .pet-card-actions
+  {
+    margin-bottom:10px;
   }

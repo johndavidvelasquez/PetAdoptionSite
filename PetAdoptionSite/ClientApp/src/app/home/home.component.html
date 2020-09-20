@@ -3,7 +3,7 @@
   <div class = "container-fluid header" >
     <div class="spacer"></div>
     <div class="container-fluid">
-      <h1 class="">Home</h1>
+      <h1 class="title" variant="light">Home</h1>
     </div>
   </div>
 
@@ -12,25 +12,29 @@
       <div class="row">
         <!--cards-->
         <div class="col-sm-4" *ngFor="let pet of pets"> 
-          <mat-card class="example-card" >
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>{{ pet.id }}</mat-card-title>
-              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          <mat-card class="pet-card" >
+            <mat-card-header class = "pet-card-header">
+              <mat-card-title class = "pet-card-petSubType" *ngFor="let subType of petSubTypes | petsubtype:pet.petSubTypeId" >
+                {{ subType.name }}
+              </mat-card-title>
+              <mat-card-subtitle class = "pet-card-petType" *ngFor="let Type of petTypes | pettype:pet.petTypeId" >
+                {{ Type.name }}
+              </mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>
-                {{ pet.description }}
-              </p>
+            <div class="pet-card-image col-sm-12">
+              <div class="pet-image"></div>
+            </div> 
+            <div class="pet-card-petName">
+              <h1>Unnamed Pet</h1>
+            </div>
+            <mat-card-content class = "pet-card-desc" >
+               <p variant="medium" class= "elipsis">{{ pet.description }}</p> 
             </mat-card-content>
-            <mat-card-actions>
-              <button mat-raised-button color = "primary">LIKE</button>
-              <button mat-button>SHARE</button>
+            <mat-card-actions class="pet-card-actions">
+              <button mat-flat-button color="primary">Adopt Me</button>
             </mat-card-actions>
           </mat-card>
         </div>
-
         
       </div>
     </div>

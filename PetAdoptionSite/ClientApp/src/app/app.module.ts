@@ -15,13 +15,17 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { SignupComponent } from './signup/signup.component';
 
+//Pipes
+import { PetsubtypePipe } from './pipes/petsubtype.pipe';
+import { PettypePipe } from './pipes/pettype.pipe';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent, 
-    routingCompontents, SignupComponent,  
+    routingCompontents, SignupComponent, PetsubtypePipe, PettypePipe,  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
