@@ -8,6 +8,7 @@ import { CommonserviceService } from '../services/commonservice.service';
 })
 export class FindComponent implements OnInit {
 
+  public title = "Pets near me";
   public regions = [];
 
   constructor(private _commonService: CommonserviceService) {

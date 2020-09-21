@@ -6,20 +6,7 @@
     padding-bottom:20px;
     transition: .4s;
   }
-  .title
-  {
-    font-weight: 100;
-  }
-  .header
-  {
-    background: rgb(64,208,130);
-    background: linear-gradient(128deg, rgba(64,208,130,1) 0%, rgba(38,240,173,1) 100%);
-    width:100%;
-    color:white;
-    padding:20px;
-    padding-bottom:1px;
-    margin:0;
-  }
+ 
   .content
   {
     padding:0;
@@ -37,7 +24,7 @@
   {
     background: #FFAB1A;
   }
-  .pet-card-petType, .pet-card-petSubType
+  .pet-card-petSubType
   {
     color:white !important;
   }
@@ -132,4 +119,9 @@
   .pet-card-actions
   {
     margin-bottom:10px;
+  }
+  .pet-card-petType
+  {
+    color: rgba(255, 255, 255, .7);
+    font-size: medium;
   }

@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   provinces = [];
   cities = [];
   citiesData = [];
-  
+  public title = "Sign Up";
 
   constructor(private _commonService: CommonserviceService, private formBuilder: FormBuilder) { }
 

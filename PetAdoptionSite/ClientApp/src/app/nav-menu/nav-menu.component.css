@@ -28,14 +28,6 @@ background: linear-gradient(128deg, rgba(64,208,130,1) 0%, rgba(38,240,173,1) 10
   flex: 1 1 auto;
 }
 
-.title
-{
-  color: white;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
 .menubtn
 {
   margin-right: 5px;
@@ -82,4 +74,7 @@ background: linear-gradient(128deg, rgba(64,208,130,1) 0%, rgba(38,240,173,1) 10
   font-size: 20px;
   margin-top:0;
 }
+
+
+
 

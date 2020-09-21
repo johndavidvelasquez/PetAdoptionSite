@@ -16,6 +16,7 @@ export class PostComponent implements OnInit {
   petTypes: IPetType[] = [];
   petSubtypes: IPetSubtype[] = [];
   subTypedata: IPetSubtype[] = [];
+  public title = "Add pet for Adoption"
 
   formGroup: FormGroup;
 

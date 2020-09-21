@@ -49,13 +49,13 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <button class = "title" mat-button [routerLink]="['/']">Pet Adoption Site</button>
+  <button class = "nav-title" mat-button [routerLink]="['/']">Pet Adoption Site</button>
   <span class="nav-spacer"></span>
   <!--items on right-side nav bar here-->
   <!--<button (click)="changeTheme()" mat-button>Switch Theme</button>-->
-  
-  <button class = "menubtn" mat-button [routerLink]="['/find']">Find a pet near me</button>
-  <button class = "menubtn" mat-button [routerLink]="['/counter']">Sign In</button>
+  <button class = "menubtn" mat-button [routerLink]="['/post']">Add a pet for adoption</button>
+  <button class = "menubtn" mat-button [routerLink]="['/find']" >Find a pet near me</button>
+  <button class = "menubtn" mat-button [routerLink]="['/signup']" >Sign In</button>
 
   <!--
   <div class="input-group search">
@@ -67,3 +67,5 @@
   -->
     
 </mat-toolbar>
+
+

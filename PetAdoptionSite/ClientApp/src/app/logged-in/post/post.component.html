@@ -1,34 +1,37 @@
-<div class="container-fuild">
-
-  <div class = "container-fluid header" >
-    <div class="spacer"></div>
-    <div class="container-fluid">
-      <h1 class="">Post pet for adoption</h1>
-    </div>
+<div class = "header">
+  <div class="spacer"></div>
+  <div class="container-fluid">
+    <h1 variant="light">{{ title }}</h1>
   </div>
+</div>
 
-  <div class = "container" style="margin-top:20px">
 
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-      <p>
-        <mat-form-field appearance="outline" class="form-element">
+  <div class = "container-fluid" style="margin-top:20px">
+
+    <mat-card class="col-sm-4 form-card">
+      <mat-card-title class = "form-card-title">
+        <h1>Pet Information</h1>
+      </mat-card-title>
+
+      
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+        <mat-card-content class = "form-card-content">
+        <!--Pet Name-->
+        <mat-form-field appearance="outline" class="form-element" color="accent">
           <mat-label>Pet Name (Optional)</mat-label>
           <input matInput placeholder="Pet Name">
         </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline" class="form-element">
+        <!--Pet Type-->
+        <mat-form-field appearance="outline" class="form-element" color="accent">
           <mat-label>Pet Type</mat-label>
           <mat-select #selectedType (selectionChange)="selectOption(selectedType.value)" formControlName="petTypeId">
             <mat-option value="option" *ngFor="let opt of petTypes" [value]="opt.id">
-              {{opt.name}}
+              {{opt.name | titlecase}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </p>
-
-      <p>
-        <mat-form-field appearance="outline" class="form-element">
+        <!--Pet SubType-->
+        <mat-form-field appearance="outline" class="form-element" color="accent">
           <mat-label>Pet Subtype</mat-label>
           <mat-select  formControlName="petSubTypeId">
             <mat-option value="option" *ngFor="let opt of subTypedata" [value]="opt.id">
@@ -36,23 +39,21 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </p>
-      
-      <p>
-        <mat-form-field appearance="outline" class="form-element">
+        <!--Description-->
+        <mat-form-field appearance="outline" class="form-element" color="accent">
           <mat-label>Description</mat-label>
           <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
-      </p>
-
-      <div class="form-element">
-        <button mat-raised-button color="primary" type="submit" class="button">Submit Form</button>
-      </div>
-
-    </form>
+      </mat-card-content>
+      <mat-card-actions class= "form-card-actions">
+        <div class="form-element">
+          <button mat-raised-button color="primary" type="submit" class="button">Submit Form</button>
+        </div>
+      </mat-card-actions>
+      </form>
+    
+  </mat-card>
 
   </div>
 
 
-
-</div>

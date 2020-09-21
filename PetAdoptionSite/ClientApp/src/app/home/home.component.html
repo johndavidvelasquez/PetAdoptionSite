@@ -1,11 +1,10 @@
-<div class="container-fuild">
-
-  <div class = "container-fluid header" >
-    <div class="spacer"></div>
-    <div class="container-fluid">
-      <h1 class="title" variant="light">Home</h1>
-    </div>
+<div class = "header">
+  <div class="spacer"></div>
+  <div class="container-fluid">
+    <h1 variant="light">{{ title }}</h1>
   </div>
+</div>
+  
 
   <div class = "container" style="margin-top:20px">
     <div class="container-fluid">
@@ -18,7 +17,7 @@
                 {{ subType.name }}
               </mat-card-title>
               <mat-card-subtitle class = "pet-card-petType" *ngFor="let Type of petTypes | pettype:pet.petTypeId" >
-                {{ Type.name }}
+                {{ Type.name | titlecase }}
               </mat-card-subtitle>
             </mat-card-header>
             <div class="pet-card-image col-sm-12">
@@ -39,5 +38,3 @@
       </div>
     </div>
   </div>
-
-</div>

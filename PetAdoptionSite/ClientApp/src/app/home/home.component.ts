@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 import { CommonserviceService } from '../services/commonservice.service';
 import { PetpostService } from '../services/petpost.service';
 import { dashCaseToCamelCase } from '@angular/compiler/src/util';
@@ -15,6 +15,7 @@ import { IPetType } from '../model/pettype';
 
 export class HomeComponent{
 
+  public title = "Home";
   public regions = [];
   public pets: IPetPost[];
   public petSubTypes: IPetSubtype[];
@@ -40,7 +41,7 @@ export class HomeComponent{
     });
 
   }
-
+  
   
 
 }

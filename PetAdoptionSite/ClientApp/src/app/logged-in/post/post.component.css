@@ -1,9 +1,26 @@
-.header
+mat-form-field
 {
-  background: rgb(64,208,130);
-  background: linear-gradient(128deg, rgba(64,208,130,1) 0%, rgba(38,240,173,1) 100%);
-  width:100%;
+  width: 100%;
+}
+
+.form-card
+{
+  padding:0;
+}
+.form-card-content
+{
+  padding:0px 15px;
+  margin-bottom:0px;
+}
+.form-card-title
+{
+  padding:15px;
+  background: #FFAB1A;
   color:white;
-  padding:20px;
-  padding-bottom:1px;
+  padding-bottom:4px;
+}
+.form-card-actions
+{
+  margin:0;
+  padding:0px 15px 15px 15px !important;
 }
