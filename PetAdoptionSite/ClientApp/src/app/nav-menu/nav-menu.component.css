@@ -75,6 +75,10 @@ background: linear-gradient(128deg, rgba(64,208,130,1) 0%, rgba(38,240,173,1) 10
   margin-top:0;
 }
 
-
+.vl {
+  border-left: 1px solid rgba(255, 255, 255, 0.575);
+  height: 70%;
+  margin:10px 15px 10px 10px;
+}
 
 

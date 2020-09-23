@@ -1,10 +1,23 @@
   .pet-card
   {
-    margin:5px;
+    margin:0px;
     padding:0px;
     margin-bottom:15px;
-    padding-bottom:20px;
+    padding-bottom:5px;
     transition: .4s;
+    position: relative;
+  }
+
+  .pet-card-seemore
+  {
+    margin:0px;
+    padding:0px;
+    margin-bottom:15px;
+    transition: .4s;
+    position: relative;
+    background: rgb(64,208,130);
+    background: linear-gradient(128deg, rgba(64,208,130,1) 0%, rgba(38,240,173,1) 100%);
+    
   }
  
   .content
@@ -16,17 +29,10 @@
   }
   .pet-card-header
   { 
-    padding-top:10px;
-    background: rgb(245,209,89);
+    color: rgb(245,209,89);
     transition: .4s;
-  }
-  .pet-card:hover .pet-card-header
-  {
-    background: #FFAB1A;
-  }
-  .pet-card-petSubType
-  {
-    color:white !important;
+    margin:0;
+    padding:0;
   }
   .pet-card-image
   {
@@ -39,32 +45,36 @@
   {
     background: url('https://material.angular.io/assets/img/examples/shiba2.jpg') 20% 20% no-repeat;
     background-size: cover;
-    border-radius: 250px;
+    border-radius: 5px 5px 0px 0px;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    margin:15px;
-    border:8px solid #F5C937;
     transition: .4s;
   }
-  .pet-card:hover .pet-image
+  .pet-seemore
   {
-    border-color: #FFAB1A;
+    background: url('https://i.ibb.co/2k73dBc/dog-01.png') no-repeat;
+    background-size: cover;
+    border-radius: 5px 5px 0px 0px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: .4s;
   }
 
-  .pet-card:hover 
+  .pet-card:hover  , .pet-card-seemore:hover
   {
     cursor:pointer;
     box-shadow: 0px 10px 20px -5px rgba(0,0,0,.3);
-    border-color: #FFAB1A;
   }
 
   .pet-card-image img
   {
     height: 100%;
-    border-radius: 300px;
   }
   .pet-card-desc
   {
@@ -94,34 +104,74 @@
     top:-10px;
     left:20;
     font-size: 12px;
-    transition: .4s;
-    
+    transition: .4s;   
   }
   .pet-card-petName h1
   {
-    position: absolute;
-    top:-8px;
-    left:15px;
     font-weight: 600;
     text-align: center;
     margin: 0;
-    color:#767676;
+    color:#36BD79;
+    font-family:'Raleway';
+    font-size:20px;
   }
+
+  .pet-card-caption h1
+  {
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    font-size:20px;
+    color:white;
+    font-family:'Raleway';
+    margin:0px;
+  }
+  
   .pet-card-petName
   {
-    position: relative;
     height: 40px;
   }
-  .pet-card-actions
+  .pet-card-button
   {
-    padding:10px 20px;
+    position: absolute;
+    right:15px;
+    top:15px;
+    background: rgba(50,175,113,.7);
   }
-  .pet-card-actions
+  .pet-card-button:hover
   {
-    margin-bottom:10px;
+    background: rgb(50,175,113);
   }
-  .pet-card-petType
+  .pet-card-petSubType
   {
-    color: rgba(255, 255, 255, .7);
-    font-size: medium;
+    color: #3AD78C;
+    margin: 0;
+    text-align: center !important;
+  }
+  .header-img
+  {
+    background: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*');
+    background-size: cover;
+    height: 400px;
+    position: relative;
+  }
+  .header-cover
+  {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left:0;
+    background: rgba(0, 0, 0, 0.171);
+  }
+
+  .pet-seeall-button
+  {
+    color:white;
+    transition: .4s;
+  }
+  .pet-seeall-button:hover
+  {
+    background: #159B66;
+    border-radius: 0px 0px 5px 5px;
   }

@@ -18,7 +18,7 @@ code {
 html, body { height: 100%; }
 body { 
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
-  background: #f5f5f5;
+  background: #EFEEF1;
 } 
 
 *:focus {
@@ -44,4 +44,5 @@ body {
 .header h1
 {
   font-weight: 100 !important;
+  font-family: 'Raleway';
 }

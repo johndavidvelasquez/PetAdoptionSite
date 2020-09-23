@@ -1,40 +1,84 @@
-<div class = "header">
-  <div class="spacer"></div>
-  <div class="container-fluid">
-    <h1 variant="light">{{ title }}</h1>
+<div class = "header header-img">
+  <div class="header-cover">
+    <div class="spacer"></div>
+    <div class="container">
+      <div class="jumbotron" style="background: transparent;">
+        <h1 style="font-size: 40px;">These pets need You.</h1>
+        <p style="opacity: .7; font-size: 20px;">&nbsp;Find a pet for you Today!</p>
+      </div>
+    </div>
   </div>
 </div>
   
 
-  <div class = "container" style="margin-top:20px">
-    <div class="container-fluid">
+  <h1 class="display-4 text-center" style="color:#1DD88D;font-weight:800; font-size: 40px; margin-top:30px;font-family: 'Raleway';">
+    Pets Available for Adoption
+  </h1>
+
+
+  <div style="margin-top:20px">
+    <div class="container">
       <div class="row">
         <!--cards-->
-        <div class="col-sm-4" *ngFor="let pet of pets"> 
+        <div class="col-sm-3" *ngFor="let pet of pets | slice:0:3" style="padding:7px"> 
           <mat-card class="pet-card" >
-            <mat-card-header class = "pet-card-header">
-              <mat-card-title class = "pet-card-petSubType" *ngFor="let subType of petSubTypes | petsubtype:pet.petSubTypeId" >
-                {{ subType.name }}
-              </mat-card-title>
-              <mat-card-subtitle class = "pet-card-petType" *ngFor="let Type of petTypes | pettype:pet.petTypeId" >
-                {{ Type.name | titlecase }}
-              </mat-card-subtitle>
-            </mat-card-header>
+            
             <div class="pet-card-image col-sm-12">
               <div class="pet-image"></div>
             </div> 
-            <div class="pet-card-petName">
+
+            <div class="pet-card-petName" style="margin-top:5px;">
               <h1>Unnamed Pet</h1>
             </div>
+            
+            <mat-card-subtitle class = "pet-card-petSubType">
+              <div class="col-sm-12" *ngFor="let subType of petSubTypes | petsubtype:pet.petSubTypeId" >
+                <p>{{ subType.name | titlecase  }} •  
+                  <span *ngFor="let Type of petTypes | pettype:pet.petTypeId">
+                    {{ Type.name | titlecase }}
+                  </span>
+                </p>
+              </div>
+            </mat-card-subtitle>
+            
+            <!--
             <mat-card-content class = "pet-card-desc" >
                <p variant="medium" class= "elipsis">{{ pet.description }}</p> 
-            </mat-card-content>
-            <mat-card-actions class="pet-card-actions">
-              <button mat-flat-button color="primary">Adopt Me</button>
-            </mat-card-actions>
+            </mat-card-content>-->
+            <button  class="pet-card-button" mat-fab color="primary">
+              <mat-icon>favorite_border</mat-icon>
+            </button>
+          </mat-card>
+        </div>
+
+        <div class="col-sm-3" style="padding:7px;">
+          <mat-card class="pet-card-seemore" >
+            
+            <div class="pet-card-image col-sm-12">
+              <div class="pet-seemore">
+
+                     
+              </div>
+            </div> 
+            
+            <div class = "pet-card-petSubType" style="top:10px;">
+                <p style="color:white;margin-bottom:5px;opacity:.7;">
+                  123 more pets are ready <br>for adoption.
+                </p>
+                <hr style="margin:0;padding:0;">
+                <div class = "pet-seeall-button" >
+                  <h2>See All</h2>
+                </div>
+            </div>
+
+            
+            
+            
           </mat-card>
         </div>
         
       </div>
     </div>
   </div>
+
+
