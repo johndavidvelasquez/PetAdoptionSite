@@ -12,48 +12,48 @@ namespace PetAdoptionSite.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PetTypesController : ControllerBase
+    public class PetPostImagesController : ControllerBase
     {
         private readonly PetAdoptionSiteContext _context;
 
-        public PetTypesController(PetAdoptionSiteContext context)
+        public PetPostImagesController(PetAdoptionSiteContext context)
         {
             _context = context;
         }
 
-        // GET: api/PetTypes
+        // GET: api/PetPostImages
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PetType>>> GetPetType()
+        public async Task<ActionResult<IEnumerable<PetPostImage>>> GetPetPostImage()
         {
-            return await _context.PetType.ToListAsync();
+            return await _context.PetPostImage.ToListAsync();
         }
 
-        // GET: api/PetTypes/5
+        // GET: api/PetPostImages/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PetType>> GetPetType(int id)
+        public async Task<ActionResult<PetPostImage>> GetPetPostImage(int id)
         {
-            var petType = await _context.PetType.FindAsync(id);
+            var petPostImage = await _context.PetPostImage.FindAsync(id);
 
-            if (petType == null)
+            if (petPostImage == null)
             {
                 return NotFound();
             }
 
-            return petType;
+            return petPostImage;
         }
 
-        // PUT: api/PetTypes/5
+        // PUT: api/PetPostImages/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPetType(int id, PetType petType)
+        public async Task<IActionResult> PutPetPostImage(int id, PetPostImage petPostImage)
         {
-            if (id != petType.Id)
+            if (id != petPostImage.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(petType).State = EntityState.Modified;
+            _context.Entry(petPostImage).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace PetAdoptionSite.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PetTypeExists(id))
+                if (!PetPostImageExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace PetAdoptionSite.Controllers
             return NoContent();
         }
 
-        // POST: api/PetTypes
+        // POST: api/PetPostImages
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<PetType>> PostPetType(PetType petType)
+        public async Task<ActionResult<PetPostImage>> PostPetPostImage(PetPostImage petPostImage)
         {
-            _context.PetType.Add(petType);
+            _context.PetPostImage.Add(petPostImage);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPetType", new { id = petType.Id }, petType);
+            return CreatedAtAction("GetPetPostImage", new { id = petPostImage.Id }, petPostImage);
         }
 
-        // DELETE: api/PetTypes/5
+        // DELETE: api/PetPostImages/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<PetType>> DeletePetType(int id)
+        public async Task<ActionResult<PetPostImage>> DeletePetPostImage(int id)
         {
-            var petType = await _context.PetType.FindAsync(id);
-            if (petType == null)
+            var petPostImage = await _context.PetPostImage.FindAsync(id);
+            if (petPostImage == null)
             {
                 return NotFound();
             }
 
-            _context.PetType.Remove(petType);
+            _context.PetPostImage.Remove(petPostImage);
             await _context.SaveChangesAsync();
 
-            return petType;
+            return petPostImage;
         }
 
-        private bool PetTypeExists(int id)
+        private bool PetPostImageExists(int id)
         {
-            return _context.PetType.Any(e => e.Id == id);
+            return _context.PetPostImage.Any(e => e.Id == id);
         }
     }
 }

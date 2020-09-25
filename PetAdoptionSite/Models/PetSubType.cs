@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PetAdoptionSite
+namespace PetAdoptionSite.Models
 {
     public partial class PetSubType
     {
