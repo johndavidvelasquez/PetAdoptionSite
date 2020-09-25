@@ -18,7 +18,7 @@
           </mat-form-field>  
           <mat-form-field appearance="outline" color = "accent">
             <mat-label>Pet Type</mat-label>
-            <mat-select multiple [formControl] = "pettypes" (selectionChange) = "selectedType(pettypes.value)">    
+            <mat-select multiple [formControl] = "pettypes">    
                 <mat-option *ngFor="let Type of petTypes" [value]="Type.id" > {{ Type.name }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -41,8 +41,8 @@
               <mat-chip-list>
                 <mat-chip color="accent" selected style="color:white;" *ngIf="(pettypes.value==null|| pettypes.value == 0); else showtags" >Any</mat-chip>
                 <ng-template #showtags>
-                <mat-chip color="accent" selected *ngFor="let filter of filters" style="color:white;" >
-                  {{filter.name}}
+                <mat-chip color="accent" selected *ngFor="let petType of petTypes | pettype:pettypes.value" style="color:white;" >
+                  {{petType.name}}
                 </mat-chip>
                 </ng-template>
               </mat-chip-list>

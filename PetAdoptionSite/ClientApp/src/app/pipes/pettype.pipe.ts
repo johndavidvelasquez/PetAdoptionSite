@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, Type } from '@angular/core';
 
 @Pipe({
   name: 'pettype',
@@ -6,11 +6,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PettypePipe implements PipeTransform {
 
-transform(petType: any[], args: number[]): any{
-    var pettypepush = [];
-    if(!args)return petType;
+transform(petType: any[], args: any): any{
 
-    return (petType||[]).filter(Type => Type.id == args); 
+  if(isNaN(args))
+    return (petType||[]).filter(Type => args.includes(Type.id));
+  else
+    return (petType||[]).filter(Type => Type.id == [args]);
+
+
   }
+
 
 }

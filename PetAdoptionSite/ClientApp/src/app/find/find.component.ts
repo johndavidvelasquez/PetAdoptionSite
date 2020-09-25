@@ -27,15 +27,6 @@ export class FindComponent implements OnInit {
     //console.log(provinces);
    }
 
-  selectedType(value: number[])
-  {
-    for(var x = 0; x < value.length; x++)
-    {
-    this.petTypes.filter(item => item.id == value[x]);
-    }
-    console.log(this.filters);
-  }
-
   ngOnInit() {
     this._commonService.getRegions()
       .subscribe(data => this.regions = data);
