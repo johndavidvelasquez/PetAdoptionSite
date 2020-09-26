@@ -15,6 +15,7 @@ export class FindComponent implements OnInit {
 
   pettypes = new FormControl();
   petsubtypes = new FormControl();
+  location = new FormControl();
   public title = "Find a Pet";
   public regions = [];
   public filters: IPetType[];

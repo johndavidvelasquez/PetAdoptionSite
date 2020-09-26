@@ -128,3 +128,30 @@ p
   margin: 0;
   text-align: center !important;
 }
+
+.pet-chips
+{
+  margin-bottom:5px;
+}
+.pet-chips-label
+{
+  padding-top:5px;
+  font-family:'Raleway';
+  font-weight: 600;
+}
+mat-form-field
+{
+  width: 100%;
+}
+.pet-chips-container
+{
+  padding-top:15px;
+  padding-left:15px;
+  padding-right:15px;
+  padding-bottom:5px;
+  background: white;
+  margin:0;
+  margin-bottom:20px;
+  border-radius:5px;
+  
+}

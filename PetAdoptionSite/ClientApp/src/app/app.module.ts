@@ -18,6 +18,9 @@ import { SignupComponent } from './signup/signup.component';
 //Pipes
 import { PetsubtypePipe } from './pipes/petsubtype.pipe';
 import { PettypePipe } from './pipes/pettype.pipe';
+import { PetsubtypeoptionPipe } from './pipes/petsubtypeoption.pipe';
+import { SortpetbytypePipe } from './pipes/sortpetbytype.pipe';
+import { SortpetbysubtypePipe } from './pipes/sortpetbysubtype.pipe';
 
 
 
@@ -25,7 +28,7 @@ import { PettypePipe } from './pipes/pettype.pipe';
   declarations: [
     AppComponent,
     NavMenuComponent, 
-    routingCompontents, SignupComponent, PetsubtypePipe, PettypePipe,  
+    routingCompontents, SignupComponent, PetsubtypePipe, PettypePipe, PetsubtypeoptionPipe, SortpetbytypePipe, SortpetbysubtypePipe,  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

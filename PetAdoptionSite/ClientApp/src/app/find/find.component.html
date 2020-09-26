@@ -12,8 +12,8 @@
         <h1>Search Pet</h1>
           <mat-form-field appearance="outline" color = "accent">
               <mat-label>Location</mat-label>
-              <mat-select >    
-                  <mat-option value="" *ngFor="let region of regions" > {{ region.name }}</mat-option>
+              <mat-select multiple [formControl] = "location">    
+                  <mat-option value="" *ngFor="let region of regions" [value]="region" > {{ region.name }}</mat-option>
               </mat-select>
           </mat-form-field>  
           <mat-form-field appearance="outline" color = "accent">
@@ -22,65 +22,113 @@
                 <mat-option *ngFor="let Type of petTypes" [value]="Type.id" > {{ Type.name }}</mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field appearance="outline" color = "accent" *ngIf="!(pettypes.value==null || pettypes.value == 0)">
+          <mat-form-field appearance="outline" color = "accent">
             <mat-label>Breed</mat-label>
             <mat-select multiple [formControl] = "petsubtypes">    
-                <mat-option *ngFor="let subType of petSubTypes" [value]="subType"> {{ subType.name | titlecase }}</mat-option>
+                <mat-option *ngFor="let subType of petSubTypes | petsubtypeoption:pettypes.value" [value]="subType.id"> {{ subType.name | titlecase }}</mat-option>
             </mat-select>
           </mat-form-field>
       </div> 
     </div>
 
-    <div class="container col-sm-9">
+    <div class="container-fluid col-sm-9">
       
-      <div class="row container">
-        <div class="container-fluid">
-          <nav aria-label="breadcrumb">
+      <div class="row">
+        <div class="container-fluid" style="padding:0px 10px;">
+
             <h4>You Searched For</h4>
-            <ol class="breadcrumb">
-              <mat-chip-list>
-                <mat-chip color="accent" selected style="color:white;" *ngIf="(pettypes.value==null|| pettypes.value == 0); else showtags" >Any</mat-chip>
-                <ng-template #showtags>
-                <mat-chip color="accent" selected *ngFor="let petType of petTypes | pettype:pettypes.value" style="color:white;" >
-                  {{petType.name}}
-                </mat-chip>
-                </ng-template>
-              </mat-chip-list>
-            </ol>
-          </nav>
-        </div>
-        <!--cards-->
-        <div class="col-sm-4" *ngFor="let pet of pets" style="padding:7px"> 
-          <mat-card class="pet-card" >
-            
-            <div class="pet-card-image col-sm-12">
-              <div class="pet-image"></div>
-            </div> 
-
-            <div class="pet-card-petName" style="margin-top:5px;">
-              <h1>Unnamed Pet</h1>
-            </div>
-            
-            <mat-card-subtitle class = "pet-card-petSubType">
-              <div class="col-sm-12" *ngFor="let subType of petSubTypes | petsubtype:pet.petSubTypeId" >
-                <p>{{ subType.name | titlecase  }} •  
-                  <span *ngFor="let Type of petTypes | pettype:pet.petTypeId">
-                    {{ Type.name | titlecase }}
-                  </span>
-                </p>
+              
+            <div class="pet-chips-container">
+              <div class="pet-chips row" *ngIf="(pettypes.value==null|| pettypes.value == 0); else showpet;">
+                <div class="col-sm-1 pet-chips-label">
+                  <label>Type</label>
+                </div>
+                <div class="col-sm-11">
+                <mat-chip-list>
+                  <mat-chip color="accent" selected style="color:white; background:#398564;">Any</mat-chip>
+                </mat-chip-list>
               </div>
-            </mat-card-subtitle>
-            
-            <!--
-            <mat-card-content class = "pet-card-desc" >
-               <p variant="medium" class= "elipsis">{{ pet.description }}</p> 
-            </mat-card-content>-->
-            <button  class="pet-card-button" mat-fab color="primary">
-              <mat-icon>favorite_border</mat-icon>
-            </button>
-          </mat-card>
+              </div>
+
+              
+              <ng-template #showpet>
+              <div class="pet-chips row">
+                <div class="col-sm-1 pet-chips-label">
+                  <label>Type</label>
+                </div>
+                <div class="col-sm-11">
+                  <mat-chip-list>
+                    <mat-chip color="accent" selected *ngFor="let petType of petTypes | pettype:pettypes.value" style="color:white; background: #52BF90;" >
+                      {{petType.name}}
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+              </div>
+              </ng-template>
+
+              <div class="pet-chips row" *ngIf="!(petsubtypes.value==null|| petsubtypes.value == 0)">
+                <div class="col-sm-1 pet-chips-label">
+                  <label>Breed</label>
+                </div>
+                <div class="col-sm-11">
+                  <mat-chip-list>
+                    <mat-chip color="accent" selected *ngFor="let petsubtype of petSubTypes | petsubtype: petsubtypes.value" style="color:white; background: #419873;" >
+                      {{petsubtype.name}}
+                    </mat-chip>
+                  </mat-chip-list>
+                  </div>
+              </div>
+              
+              <div class="pet-chips row" *ngIf="!(location.value==null|| location.value == 0)">
+                <div class="col-sm-1 pet-chips-label">
+                  <label>Location</label>
+                </div>
+                <div class="col-sm-11">
+                  <mat-chip-list>
+                    <mat-chip color="accent" selected *ngFor="let loc of location.value" style="color:white; background: #E91E63;" >
+                      {{loc.name}}
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+              </div>
+    
+            </div><!--pet-chips-container-->
         </div>
 
+
+        <!--cards-->
+        <div class="container row" style="margin:0 auto; padding:5px;">
+          <div class="col-sm-4" *ngFor="let pet of (pets | sortpetbytype:pettypes.value) | sortpetbysubtype:petsubtypes.value" style="padding:7px"> 
+            <mat-card class="pet-card" >
+
+              <div class="pet-card-image col-sm-12">
+                <div class="pet-image"></div>
+              </div> 
+
+              <div class="pet-card-petName" style="margin-top:5px;">
+                <h1>Unnamed Pet</h1>
+              </div>
+              
+              <mat-card-subtitle class = "pet-card-petSubType">
+                <div class="col-sm-12" *ngFor="let subType of petSubTypes | petsubtype:pet.petSubTypeId" >
+                  <p>{{ subType.name | titlecase  }} •  
+                    <span *ngFor="let Type of petTypes | pettype:pet.petTypeId">
+                      {{ Type.name | titlecase }}
+                    </span>
+                  </p>
+                </div>
+              </mat-card-subtitle>
+              
+              <!--
+              <mat-card-content class = "pet-card-desc" >
+                <p variant="medium" class= "elipsis">{{ pet.description }}</p> 
+              </mat-card-content>-->
+              <button  class="pet-card-button" mat-fab color="primary">
+                <mat-icon>favorite_border</mat-icon>
+              </button>
+            </mat-card>
+          </div><!--col-sm-4 mat-card-->
+        </div>
         
       </div>
     </div>

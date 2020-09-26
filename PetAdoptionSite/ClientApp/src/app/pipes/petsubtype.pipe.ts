@@ -6,9 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PetsubtypePipe implements PipeTransform {
 
-  transform(petSubType: any[], args: number): any {
-    if(!args) return petSubType;
-    return (petSubType||[]).filter(subType => subType.id === args);
+  transform(petSubType: any[], args: any): any {
+    if(isNaN(args))
+    return (petSubType||[]).filter(Type => args.includes(Type.id));
+    else
+    return (petSubType||[]).filter(Type => Type.id == [args]);
   }
 
 } 
