@@ -5,6 +5,8 @@ import { IPetType } from 'src/app/model/pettype';
 import { IPetSubtype } from 'src/app/model/petsubtype';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonserviceService } from 'src/app/services/commonservice.service';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 @Component({
   selector: 'app-post',
@@ -20,7 +22,12 @@ export class PostComponent implements OnInit {
 
   formGroup: FormGroup;
 
-  constructor(private petpostService: PetpostService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private petpostService: PetpostService, private formBuilder: FormBuilder, private router: Router, private _commonService: CommonserviceService) { }
+
+  provinces = [];
+  cities = [];
+  citiesData = [];
+  url;
 
   ngOnInit() {
 
@@ -38,20 +45,23 @@ export class PostComponent implements OnInit {
       this.petSubtypes = result;                  
     });
 
-    // this.petPostForm = this.formBuilder.group({
-    //   fullName: [''],  
-    //   email: [''],
-    //   message: ['']
-    // });
+    this._commonService.getProvinces()
+    .subscribe(data => this.provinces = data);
+
+    this._commonService.getCities()
+    .subscribe(data => this.cities = data);
+    
 
   }
 
   createForm() {
     this.formGroup = this.formBuilder.group({
-      //'name': [null, Validators.required],
+      'name': [null, Validators.required],
       'petTypeId': [null, Validators.required],
       'petSubTypeId': [null],
-      'description': [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      'description': [null, [Validators.required, Validators.minLength(5), Validators.maxLength(250)]],
+      'cityName': [null, Validators.required],
+      'provinceKey': [null, Validators.required]
     });
   }
 
@@ -65,6 +75,22 @@ export class PostComponent implements OnInit {
       //Insert dialog boxes
       this.router.navigateByUrl('/');
     }, error => console.error(error));
+  }
+
+  selectProvince(value:string) {
+    this.citiesData = this.cities.filter(item => item.province === value);
+  }
+
+  onSelectFileMain(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+      }
+    }
   }
 
 }

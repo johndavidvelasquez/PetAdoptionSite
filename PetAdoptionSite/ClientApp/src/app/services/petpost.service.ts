@@ -32,4 +32,7 @@ export class PetpostService {
   postPetSubtypes(newPetSubTypes) {
     return this.http.post(this.baseUrl + 'api/PetSubTypes', newPetSubTypes);
   }
+  postPetImage(newPetImage) {
+    return this.http.post(this.baseUrl + 'api/PetPostImages', newPetImage);
+  }
 }
