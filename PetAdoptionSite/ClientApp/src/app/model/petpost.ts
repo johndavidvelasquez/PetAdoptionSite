@@ -12,7 +12,7 @@ export interface IPetPost {
     updatedOn: Date,
 }
 
-export interface IPetPost {
+export interface IPetPostImage {
     id: number,
     postId: string,
     img: string,

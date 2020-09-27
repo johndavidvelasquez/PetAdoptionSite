@@ -15,8 +15,8 @@ export class PetpostService {
   getPetPosts(): Observable<IPetPost[]> {
     return this.http.get<IPetPost[]>(this.baseUrl + 'api/PetPosts');
   }
-  postPetPosts(newPetPosts) {
-    return this.http.post(this.baseUrl + 'api/PetPosts', newPetPosts);
+  postPetPosts(newPetPosts): Observable<IPetPost> {
+    return this.http.post<IPetPost>(this.baseUrl + 'api/PetPosts', newPetPosts);
   }
 
   getPetTypes(): Observable<IPetType[]> {

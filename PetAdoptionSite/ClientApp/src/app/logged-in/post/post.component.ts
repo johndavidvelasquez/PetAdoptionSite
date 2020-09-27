@@ -28,6 +28,7 @@ export class PostComponent implements OnInit {
   cities = [];
   citiesData = [];
   url;
+  private base64textString:String="";
 
   ngOnInit() {
 
@@ -73,6 +74,7 @@ export class PostComponent implements OnInit {
   onSubmit(post) {
     this.petpostService.postPetPosts(post).subscribe(result => {
       //Insert dialog boxes
+      this.postImageToDB(this.base64textString,result.id);
       this.router.navigateByUrl('/');
     }, error => console.error(error));
   }
@@ -82,6 +84,8 @@ export class PostComponent implements OnInit {
   }
 
   onSelectFileMain(event) {
+    var files = event.target.files;
+    var file = files[0];
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
@@ -89,8 +93,48 @@ export class PostComponent implements OnInit {
 
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.url = event.target.result;
+        reader.onload =this._handleReaderLoaded.bind(this);
+        reader.readAsBinaryString(file);
       }
+      
     }
+  }
+
+  handleFileSelect(evt){
+      var files = evt.target.files;
+      var file = files[0];
+
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload =this._handleReaderLoaded.bind(this);
+
+        reader.readAsBinaryString(file);
+    }
+  }
+
+
+
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+            this.base64textString= btoa(binaryString);
+            console.log(btoa(binaryString));
+            console.log(atob(binaryString));
+            this.postImageToDB(this.base64textString, 99);
+  }
+
+  postImageToDB(base64data, newPostId) {
+    var newImage = {
+        postId: newPostId,
+        img: base64data,
+        isMain: true
+    };
+
+    console.log(newImage);
+
+    this.petpostService.postPetImage(newImage).subscribe(result => {
+    }, error => console.error(error));
+
   }
 
 }
