@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter} from '@angular/core';
 import { CommonserviceService } from '../services/commonservice.service';
 import { PetpostService } from '../services/petpost.service';
 import { dashCaseToCamelCase } from '@angular/compiler/src/util';
-import { IPetPost } from 'src/app/model/petpost';
+import { IPetPost, IPetPostImage} from 'src/app/model/petpost';
 import { IPetSubtype } from '../model/petsubtype';
 import { IPetType } from '../model/pettype';
 
@@ -20,6 +20,7 @@ export class HomeComponent{
   public pets: IPetPost[];
   public petSubTypes: IPetSubtype[];
   public petTypes: IPetType[];
+  public petImages: IPetPostImage[];
 
   panelOpenState = false;
   constructor(private _petsService: PetpostService) {}
@@ -38,6 +39,10 @@ export class HomeComponent{
     this._petsService.getPetTypes().subscribe(result => {
       this.petTypes = result;
       console.log(this.petSubTypes);
+    });
+
+    this._petsService.getPetImages().subscribe(result => {
+      this.petImages = result;                  
     });
 
   }

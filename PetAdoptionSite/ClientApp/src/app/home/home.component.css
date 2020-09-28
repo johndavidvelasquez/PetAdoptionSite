@@ -4,6 +4,9 @@
     padding:0px;
     margin-bottom:15px;
     padding-bottom:5px;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
     transition: .4s;
     position: relative;
   }
@@ -43,7 +46,6 @@
   }
   .pet-image
   {
-    background: url('https://material.angular.io/assets/img/examples/shiba2.jpg') 20% 20% no-repeat;
     background-size: cover;
     border-radius: 5px 5px 0px 0px;
     position: absolute;
@@ -52,6 +54,12 @@
     left: 0;
     right: 0;
     transition: .4s;
+    overflow: hidden;
+  }
+  .pet-image img
+  {
+    height: 100%;
+    border-radius: 5px;
   }
   .pet-seemore
   {
@@ -134,8 +142,8 @@
   .pet-card-button
   {
     position: absolute;
-    right:15px;
-    top:15px;
+    right:20px;
+    top:20px;
     background: rgba(50,175,113,.7);
   }
   .pet-card-button:hover

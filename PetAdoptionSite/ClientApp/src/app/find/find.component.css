@@ -6,6 +6,9 @@
   padding-bottom:5px;
   transition: .4s;
   position: relative;
+  padding-top:10px;
+  padding-left:10px;
+  padding-right:10px;
 }
 .pet-card-header
 { 
@@ -23,7 +26,6 @@
 }
 .pet-image
 {
-  background: url('https://material.angular.io/assets/img/examples/shiba2.jpg') 20% 20% no-repeat;
   background-size: cover;
   border-radius: 5px 5px 0px 0px;
   position: absolute;
@@ -32,7 +34,14 @@
   left: 0;
   right: 0;
   transition: .4s;
+  overflow: hidden;
+  }
+.pet-image img
+{
+  height: 100%;
+  border-radius: 5px;
 }
+
 .pet-seemore
 {
   background: url('https://i.ibb.co/2k73dBc/dog-01.png') no-repeat;
@@ -114,8 +123,8 @@ p
 .pet-card-button
 {
   position: absolute;
-  right:15px;
-  top:15px;
+  right:20px;
+  top:20px;
   background: rgba(50,175,113,.7);
 }
 .pet-card-button:hover

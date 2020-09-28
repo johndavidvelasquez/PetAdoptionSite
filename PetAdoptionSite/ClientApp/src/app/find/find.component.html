@@ -102,11 +102,15 @@
             <mat-card class="pet-card" >
 
               <div class="pet-card-image col-sm-12">
-                <div class="pet-image"></div>
+                <div class="pet-image text-center" *ngFor="let petimage of petImages | imgpostid:pet.id">
+                  <img *ngIf="petimage.id==null" src="https://sciences.ucf.edu/psychology/wp-content/uploads/sites/63/2019/09/No-Image-Available.png" alt="">
+                  <img src="data:image/jpg;base64,{{petimage.img}}" alt="">
+                </div>
               </div> 
 
               <div class="pet-card-petName" style="margin-top:5px;">
-                <h1>Unnamed Pet</h1>
+                <h1 *ngIf="pet.name == null">Unnamed Pet</h1>
+                <h1>{{pet.name | titlecase}}</h1>
               </div>
               
               <mat-card-subtitle class = "pet-card-petSubType">

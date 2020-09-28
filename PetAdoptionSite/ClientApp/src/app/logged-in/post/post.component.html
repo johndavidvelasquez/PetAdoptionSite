@@ -6,78 +6,152 @@
 </div>
 
 
+
   <div class = "container-fluid" style="margin-top:20px">
-
-    <mat-card class="col-sm-4 form-card">
-      <mat-card-title class = "form-card-title">
-        <h1>Pet Information</h1>
-      </mat-card-title>
-
-      
-      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-        <mat-card-content class = "form-card-content">
-        <!--Pet Name-->
-        <mat-form-field appearance="outline" class="form-element" color="accent">
-          <mat-label>Pet Name (Optional)</mat-label>
-          <input matInput placeholder="Pet Name" formControlName="name">
-        </mat-form-field>
-        <!--Pet Type-->
-        <mat-form-field appearance="outline" class="form-element" color="accent">
-          <mat-label>Pet Type</mat-label>
-          <mat-select #selectedType (selectionChange)="selectOption(selectedType.value)" formControlName="petTypeId">
-            <mat-option value="option" *ngFor="let opt of petTypes" [value]="opt.id">
-              {{opt.name | titlecase}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <!--Pet SubType-->
-        <mat-form-field appearance="outline" class="form-element" color="accent">
-          <mat-label>Pet Subtype</mat-label>
-          <mat-select  formControlName="petSubTypeId">
-            <mat-option value="option" *ngFor="let opt of subTypedata" [value]="opt.id">
-              {{opt.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <!--Description-->
-        <mat-form-field appearance="outline" class="form-element" color="accent">
-          <mat-label>Description</mat-label>
-          <textarea matInput formControlName="description"></textarea>
-        </mat-form-field>
-        <!-- Province -->
-          <mat-form-field appearance="outline" class="form-element">
-            <mat-label>State/Province</mat-label>
-            <mat-select #selectedProvince (selectionChange)="selectProvince(selectedProvince.value)" formControlName="provinceKey">
-              <mat-option value="option" *ngFor="let opt of provinces" [value]="opt.key">
-                {{opt.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        <!-- City -->
-          <mat-form-field appearance="outline" class="form-element">
-            <mat-label>City/Municipality</mat-label>
-            <mat-select formControlName="cityName">
-              <mat-option value="option" *ngFor="let opt of citiesData" [value]="opt.name">
-                {{opt.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-        <!-- Main Image -->
-        <mat-card-subtitle> Main Photo </mat-card-subtitle>
-        <img [src]="url" height="250">
-          <input name="imageUrl" type="file" accept="image/*" (change)="onSelectFileMain($event)">
-        <br>
-      </mat-card-content>
-      <mat-card-actions class= "form-card-actions">
-        <div class="form-element">
-          <button mat-raised-button color="primary" type="submit" class="button">Add pet for adoption</button>
-        </div>
-      </mat-card-actions>
-      </form>
     
-  </mat-card>
+    <mat-horizontal-stepper [linear]="true" #stepper style="background: transparent;">
+    
+      <mat-step [stepControl]="petFormGroup">
+      
+        <form [formGroup]="petFormGroup" #petInfoForm="ngForm">
+          <ng-template matStepLabel style="color:red;">Pet Information</ng-template>
+          <div class="row justify-content-center" style="margin:15px;">
+          <div class="col-sm-6 ">
+            <mat-card class="form-card">
+              <mat-card-title class = "form-card-title">
+                <h1>Pet Information</h1>
+              </mat-card-title>
+              <mat-card-content class = "form-card-content">
+                <!--Pet Name-->
+                <mat-form-field appearance="outline" class="form-element" color="accent">
+                  <mat-label>Pet Name (Optional)</mat-label>
+                  <input matInput placeholder="Pet Name" formControlName="name">
+                </mat-form-field>
+                <!--Pet Type-->
+                <mat-form-field appearance="outline" class="form-element" color="accent">
+                  <mat-label>Pet Type</mat-label>
+                  <mat-select #selectedType (selectionChange)="selectOption(selectedType.value)" formControlName="petTypeId">
+                    <mat-option value="option" *ngFor="let opt of petTypes" [value]="opt.id">
+                      {{opt.name | titlecase}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!--Pet SubType-->
+                <mat-form-field appearance="outline" class="form-element" color="accent">
+                  <mat-label>Pet Subtype</mat-label>
+                  <mat-select  formControlName="petSubTypeId">
+                    <mat-option value="option" *ngFor="let opt of subTypedata" [value]="opt.id">
+                      {{opt.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!--Description-->
+                <mat-form-field appearance="outline" class="form-element" color="accent">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+        
+                </mat-card-content>
+              </mat-card>
 
-  </div>
+              <div class = "float-right">
+                <button type="button" class = "stepper-button-next" mat-flat-button matStepperNext>Next</button>
+              </div>
+            </div>
+          </div>
+          
+        </form>
+      </mat-step>
+      
+      <mat-step [stepControl]="locationFormGroup">
+        <form [formGroup]="locationFormGroup" #petLocForm="ngForm" >
+          <ng-template matStepLabel style="color:red;">Pet Location</ng-template>
+          <div class="row justify-content-center" style="margin:15px;">
+          <div class="col-sm-6">
+            <mat-card class="form-card">
+              <mat-card-title class = "form-card-title">
+                <h1>Location</h1>
+              </mat-card-title>
+              <mat-card-content class = "form-card-content">
+      
+              <!-- Province -->
+                <mat-form-field appearance="outline" class="form-element" color="accent">
+                  <mat-label>State/Province</mat-label>
+                  <mat-select #selectedProvince (selectionChange)="selectProvince(selectedProvince.value)" formControlName="provinceKey">
+                    <mat-option value="option" *ngFor="let opt of provinces" [value]="opt.key">
+                      {{opt.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              <!-- City -->
+                <mat-form-field appearance="outline" class="form-element" color="accent">
+                  <mat-label>City/Municipality</mat-label>
+                  <mat-select formControlName="cityName">
+                    <mat-option value="option" *ngFor="let opt of citiesData" [value]="opt.name">
+                      {{opt.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-card-content>
+            </mat-card>
+            <div>
+              <button type="button" class="stepper-button-back" mat-button matStepperPrevious>Back</button>
+              <button type="button" class = "stepper-button-next" mat-button matStepperNext>Next</button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="imageFormGroup">
+        <form [formGroup]="imageFormGroup" #petImageForm="ngForm" >
+          <ng-template matStepLabel style="color:red;">Upload Pet Image</ng-template>
+          <div class="row justify-content-center" style="margin:15px;">
+            <div class="col-sm-4">
+              <mat-card class="form-card">
+                <mat-card-title class = "form-card-title">
+                  <h1>Upload Pet Picture</h1>
+                </mat-card-title>
+                <div class="pet-image col-sm-12">
+                    <div class= "pet-no-image" *ngIf="url==null">
+                      <div class="pet-no-img">
+                        <button type="button" (click)="imgUpload.click()" mat-button class="pet-no-img-btn">Choose Image</button>
+                      </div>
+                    </div>
+                    <img *ngIf="!(url==null)" [src]="url">
+                    <button type="button" class ="select-pet-img" *ngIf="!(url==null)" mat-fab (click)="imgUpload.click()"><mat-icon>photo</mat-icon></button>
+                </div>
+                <input name="imageUrl" type="file" accept="image/*" #imgUpload (change)="onSelectFileMain($event)" hidden> 
+              
+              </mat-card>
+              <div class="form-element">
+                <button mat-raised-button color="primary" (click)="mapForms(petInfoForm.value,petLocForm.value);onSubmit(postData)">Add pet for adoption</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+
+   
+    </mat-horizontal-stepper>
+
+    <div class="row container-fluid">
+  
+
+    
+
+    </div>
+
+
+</div>
 
 

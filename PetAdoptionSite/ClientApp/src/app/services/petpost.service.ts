@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IPetPost} from '../model/petpost';
+import { IPetPost, IPetPostImage} from '../model/petpost';
 import { IPetType } from '../model/pettype';
 import { IPetSubtype } from '../model/petsubtype';
 
@@ -15,6 +15,11 @@ export class PetpostService {
   getPetPosts(): Observable<IPetPost[]> {
     return this.http.get<IPetPost[]>(this.baseUrl + 'api/PetPosts');
   }
+
+  getPetImages(): Observable<IPetPostImage[]> {
+    return this.http.get<IPetPostImage[]>(this.baseUrl + 'api/PetPostImages');
+  }
+
   postPetPosts(newPetPosts): Observable<IPetPost> {
     return this.http.post<IPetPost>(this.baseUrl + 'api/PetPosts', newPetPosts);
   }

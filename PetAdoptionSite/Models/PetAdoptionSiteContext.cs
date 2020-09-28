@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace PetAdoptionSite.Models
 {
@@ -8,7 +9,10 @@ namespace PetAdoptionSite.Models
     {
         public PetAdoptionSiteContext()
         {
+            
         }
+
+        public IConfiguration Configuration { get; }
 
         public PetAdoptionSiteContext(DbContextOptions<PetAdoptionSiteContext> options)
             : base(options)
@@ -25,8 +29,7 @@ namespace PetAdoptionSite.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-6V2N32E\\SQLEXPRESS;Initial Catalog=PetAdoptionSite;Integrated Security=SSPI;");
+                optionsBuilder.UseSqlServer(Configuration.GetConnectionString("PetAdoptionSite"));
             }
         }
 

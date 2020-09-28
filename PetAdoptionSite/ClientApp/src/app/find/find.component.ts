@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonserviceService } from '../services/commonservice.service';
 import { PetpostService } from '../services/petpost.service';
-import { IPetPost } from '../model/petpost';
+import { IPetPost, IPetPostImage } from '../model/petpost';
 import { IPetSubtype } from '../model/petsubtype';
 import { IPetType } from '../model/pettype';
 import { FormControl } from '@angular/forms';
@@ -22,6 +22,7 @@ export class FindComponent implements OnInit {
   public pets: IPetPost[];
   public petSubTypes: IPetSubtype[];
   public petTypes: IPetType[];
+  public petImages: IPetPostImage[];
 
 
   constructor(private _commonService: CommonserviceService, private _petsService: PetpostService) {
@@ -47,6 +48,9 @@ export class FindComponent implements OnInit {
         console.log(this.petSubTypes);
       });  
     
+      this._petsService.getPetImages().subscribe(result => {
+        this.petImages = result;                  
+      });
   
 
   }
