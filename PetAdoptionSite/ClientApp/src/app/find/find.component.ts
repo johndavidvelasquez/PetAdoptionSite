@@ -5,6 +5,7 @@ import { IPetPost, IPetPostImage } from '../model/petpost';
 import { IPetSubtype } from '../model/petsubtype';
 import { IPetType } from '../model/pettype';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-find',
@@ -25,7 +26,7 @@ export class FindComponent implements OnInit {
   public petImages: IPetPostImage[];
 
 
-  constructor(private _commonService: CommonserviceService, private _petsService: PetpostService) {
+  constructor(private _commonService: CommonserviceService, private _petsService: PetpostService, private router: Router) {
     //console.log(provinces);
    }
 
@@ -51,8 +52,11 @@ export class FindComponent implements OnInit {
       this._petsService.getPetImages().subscribe(result => {
         this.petImages = result;                  
       });
-  
+  }
 
+  onPetSelect(petId)
+  {
+    this.router.navigate(['/view',petId]);
   }
 
 }

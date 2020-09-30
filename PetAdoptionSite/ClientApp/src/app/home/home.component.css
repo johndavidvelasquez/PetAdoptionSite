@@ -4,9 +4,6 @@
     padding:0px;
     margin-bottom:15px;
     padding-bottom:5px;
-    padding-top:10px;
-    padding-left:10px;
-    padding-right:10px;
     transition: .4s;
     position: relative;
   }
@@ -46,8 +43,7 @@
   }
   .pet-image
   {
-    background-size: cover;
-    border-radius: 5px 5px 0px 0px;
+    background-size: cover;  
     position: absolute;
     top: 0;
     bottom: 0;
@@ -59,8 +55,11 @@
   .pet-image img
   {
     height: 100%;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
+    width: 100%;
+    object-fit: cover;
   }
+
   .pet-seemore
   {
     background: url('https://i.ibb.co/2k73dBc/dog-01.png') no-repeat;
@@ -120,9 +119,10 @@
     text-align: center;
     margin: 0;
     color:#36BD79;
-    font-family:'Raleway';
+    font-family:'Segoe UI';
     font-size:20px;
   }
+
 
   .pet-card-caption h1
   {
@@ -145,10 +145,13 @@
     right:20px;
     top:20px;
     background: rgba(50,175,113,.7);
+    transition: .4s;
   }
   .pet-card-button:hover
   {
     background: rgb(50,175,113);
+    transform: rotate(20deg) scale(1.2);
+  
   }
   .pet-card-petSubType
   {

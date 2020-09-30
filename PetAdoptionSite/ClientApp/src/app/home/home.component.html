@@ -43,19 +43,18 @@
                 </p>
               </div>
             </mat-card-subtitle>
-            
             <!--
             <mat-card-content class = "pet-card-desc" >
                <p variant="medium" class= "elipsis">{{ pet.description }}</p> 
             </mat-card-content>-->
-            <button  class="pet-card-button" mat-fab color="primary">
+            <button  class="pet-card-button" mat-fab color="primary" (click)="onPetSelect(pet.id)">
               <mat-icon>favorite_border</mat-icon>
             </button>
           </mat-card>
         </div>
 
         <div class="col-sm-3" style="padding:7px;">
-          <mat-card class="pet-card-seemore" >
+          <mat-card class="pet-card-seemore" *ngIf="!(pets==null)">
             
             <div class="pet-card-image col-sm-12">
               <div class="pet-seemore">
@@ -64,12 +63,12 @@
               </div>
             </div> 
             
-            <div class = "pet-card-petSubType" style="top:10px;" >
+            <div class = "pet-card-petSubType" style="top:10px;">
                 <p style="color:white;margin-bottom:5px;opacity:.7;">
                   {{pets.length - 3}} more pets are ready <br>for adoption.
                 </p>
                 <hr style="margin:0;padding:0;">
-                <div class = "pet-seeall-button" >
+                <div class = "pet-seeall-button" [routerLink]="['/find']" >
                   <h2>See All</h2>
                 </div>
             </div>

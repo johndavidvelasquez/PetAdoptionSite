@@ -22,6 +22,8 @@ import { PetsubtypeoptionPipe } from './pipes/petsubtypeoption.pipe';
 import { SortpetbytypePipe } from './pipes/sortpetbytype.pipe';
 import { SortpetbysubtypePipe } from './pipes/sortpetbysubtype.pipe';
 import { ImgpostidPipe } from './pipes/imgpostid.pipe';
+import { PetidPipe } from './pipes/petid.pipe';
+
 
 
 
@@ -29,7 +31,14 @@ import { ImgpostidPipe } from './pipes/imgpostid.pipe';
   declarations: [
     AppComponent,
     NavMenuComponent, 
-    routingCompontents, SignupComponent, PetsubtypePipe, PettypePipe, PetsubtypeoptionPipe, SortpetbytypePipe, SortpetbysubtypePipe, ImgpostidPipe,  
+    routingCompontents,
+    SignupComponent, 
+    PetsubtypePipe, 
+    PettypePipe, 
+    PetsubtypeoptionPipe, 
+    SortpetbytypePipe, 
+    SortpetbysubtypePipe, 
+    ImgpostidPipe, PetidPipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

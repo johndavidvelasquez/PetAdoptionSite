@@ -8,6 +8,7 @@ import { FetchDataComponent } from '../fetch-data/fetch-data.component';
 import { FindComponent } from '../find/find.component';
 import { PostComponent } from '../logged-in/post/post.component';
 import { SignupComponent } from '../signup/signup.component';
+import { ViewComponent } from '../view/view.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'find', component: FindComponent },
     { path: 'post', component: PostComponent },
     { path: 'signup', component: SignupComponent },
+    { path: 'view/:id', component: ViewComponent },
 ]; 
 
 @NgModule({
@@ -30,5 +32,6 @@ export const routingCompontents = [
     FetchDataComponent,
     FindComponent,
     PostComponent,
-    SignupComponent
+    SignupComponent,
+    ViewComponent
 ]

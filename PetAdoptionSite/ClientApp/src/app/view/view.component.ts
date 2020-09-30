@@ -1,31 +1,29 @@
-import { Component, Output, EventEmitter} from '@angular/core';
-import { CommonserviceService } from '../services/commonservice.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PetpostService } from '../services/petpost.service';
 import { IPetPost, IPetPostImage} from 'src/app/model/petpost';
 import { IPetSubtype } from '../model/petsubtype';
 import { IPetType } from '../model/pettype';
-import { Router } from '@angular/router';
-
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls:['./home.component.css']
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css']
 })
+export class ViewComponent implements OnInit {
 
-export class HomeComponent{
-
-  public title = "Home";
-  public regions = [];
+  title = "view";
+  public petId;
   public pets: IPetPost[];
   public petSubTypes: IPetSubtype[];
   public petTypes: IPetType[];
   public petImages: IPetPostImage[];
 
-  panelOpenState = false;
-  constructor(private _petsService: PetpostService, private router: Router ) {}
+  constructor(private route: ActivatedRoute,private _petsService: PetpostService,) { }
 
   ngOnInit() {
+    this.petId = parseInt(this.route.snapshot.paramMap.get('id'));
+
     this._petsService.getPetPosts().subscribe(result => {
       this.pets = result;
       console.log(this.pets);
@@ -44,15 +42,6 @@ export class HomeComponent{
     this._petsService.getPetImages().subscribe(result => {
       this.petImages = result;                  
     });
-
   }
-
-  onPetSelect(petId)
-  {
-    this.router.navigate(['/view', petId]);
-    console.log(petId);
-  }
-  
-  
 
 }

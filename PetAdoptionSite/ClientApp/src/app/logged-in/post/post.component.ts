@@ -98,20 +98,23 @@ export class PostComponent implements OnInit {
     this.citiesData = this.cities.filter(item => item.province === value);
   }
 
+
   
   onSelectFileMain(event) {
     var files = event.target.files;
     var file = files[0];
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+      const reader: FileReader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
+      
+        reader.onload = (event: Event) => { // called once readAsDataURL is completed 
+          this.url = reader.result;
+          reader.onload =this._handleReaderLoaded.bind(this);
+          reader.readAsBinaryString(file);
 
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = event.target.result;
-        reader.onload =this._handleReaderLoaded.bind(this);
-        reader.readAsBinaryString(file);
-      }
+        }
+      
       
     }
   }
@@ -130,7 +133,7 @@ export class PostComponent implements OnInit {
   }
 
 
-
+  
   _handleReaderLoaded(readerEvt) {
     var binaryString = readerEvt.target.result;
     this.base64textString= btoa(binaryString);

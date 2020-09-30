@@ -1,0 +1,42 @@
+<div class="spacer"></div>
+
+<div class="text-center pet-info-header">
+
+    <div class="pet-cover">
+
+        <div class="pet-cover-image" *ngFor="let petimage of petImages | imgpostid:petId">
+            <img class="cover-image" src="data:image/jpg;base64,{{petimage.img}}" alt="">
+            <button class="pet-adopt-button" mat-raised-button>Adopt Me</button>
+        </div>
+
+        <div class="pet-image-container">
+            <div class="dumy"></div>
+            <div class="pet-profile-image" *ngFor="let petimage of petImages | imgpostid:petId">
+                <img class="profile-pic" src="data:image/jpg;base64,{{petimage.img}}" alt="">  
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div *ngFor="let pet of pets | petid:petId">
+        <h2 class="pet-name">{{pet.name | titlecase}}</h2>
+        <div class="pet-description">
+            <p>{{pet.description}}</p>
+        </div>
+    </div>
+    <hr>
+    <div *ngFor="let pet of pets | petid:petId">
+        <div class="pet-type">
+            <span *ngFor="let type of petTypes | pettype:pet.petTypeId">
+                {{type.name | titlecase}}
+            </span> •
+            <span *ngFor="let subtype of petSubTypes | petsubtype:pet.petSubTypeId">
+                {{subtype.name | titlecase}}
+            </span>
+        </div>
+    </div>
+    
+</div>
+
