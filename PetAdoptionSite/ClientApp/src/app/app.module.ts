@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 //Pipes
 import { PetsubtypePipe } from './pipes/petsubtype.pipe';
@@ -23,6 +24,7 @@ import { SortpetbytypePipe } from './pipes/sortpetbytype.pipe';
 import { SortpetbysubtypePipe } from './pipes/sortpetbysubtype.pipe';
 import { ImgpostidPipe } from './pipes/imgpostid.pipe';
 import { PetidPipe } from './pipes/petid.pipe';
+
 
 
 
@@ -38,7 +40,9 @@ import { PetidPipe } from './pipes/petid.pipe';
     PetsubtypeoptionPipe, 
     SortpetbytypePipe, 
     SortpetbysubtypePipe, 
-    ImgpostidPipe, PetidPipe,
+    ImgpostidPipe, 
+    PetidPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -49,6 +53,7 @@ import { PetidPipe } from './pipes/petid.pipe';
     BrowserAnimationsModule
   ],
   providers: [CommonserviceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[LoginComponent],
 })
 export class AppModule { }

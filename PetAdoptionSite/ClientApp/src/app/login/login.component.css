@@ -1,0 +1,58 @@
+.form-element
+{
+    width: 100%;
+    margin-bottom: 10px !important;
+    height: 55px;
+}
+.form-input
+{
+    margin:0 !important;
+}
+.dialog-content
+{
+    padding:15px;
+    width:350px;
+}
+hr
+{
+    margin:0;
+}
+.or-div
+{
+    width: 20%;
+    background: white; 
+    transform: translateY(-50%);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Segoe UI' !important;
+    font-size: 15px;
+}
+.dialog-title
+{
+    font-family: 'Segoe UI' !important;
+    font-size: 20px;
+}
+.dialog-button-icon
+{
+    height: 25px;
+    margin-right: 10px;
+}
+.dialog-buttons
+{
+    padding:10px;
+    background: #1666DD;
+    color:white;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.dialog-login-button
+{
+    width: 50%;
+    margin:auto;
+    display: block;
+    margin-bottom:20px;
+    background: #2BE9A4;
+    color:white;
+}

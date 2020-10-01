@@ -58,7 +58,7 @@
 
   <div class="vl"></div>
   <button class = "menubtn" mat-button [routerLink]="['/signup']" >Sign Up</button>
-  <button class = "menubtn" mat-button [routerLink]="['/signup']" style="margin-right:0">Log in</button>
+  <button class = "menubtn" mat-button (click)="openDialog()" style="margin-right:0">Log in</button>
 
   <!--
   <div class="input-group search">

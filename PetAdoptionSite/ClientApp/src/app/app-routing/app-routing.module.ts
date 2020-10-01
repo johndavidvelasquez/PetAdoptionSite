@@ -11,6 +11,7 @@ import { SignupComponent } from '../signup/signup.component';
 import { ViewComponent } from '../view/view.component';
 
 
+
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'counter', component: CounterComponent },
@@ -33,5 +34,5 @@ export const routingCompontents = [
     FindComponent,
     PostComponent,
     SignupComponent,
-    ViewComponent
+    ViewComponent,
 ]

@@ -1,0 +1,32 @@
+<h2 class="dialog-title">Login</h2>
+<mat-dialog-content class="mat-typography dialog-content">
+  <div class="login-form">
+    <mat-form-field appearance="outline" color="accent" class="form-element">
+      <mat-label>Email</mat-label>
+      <input class= "form-input" matInput type='email' placeholder="Email" formControlName="email" cdkFocusInitial>
+    </mat-form-field>
+    <mat-form-field appearance="outline"  color="accent" class="form-element">
+      <mat-label>Password</mat-label>
+      <input class= "form-input" matInput type='Password' placeholder="Password" formControlName="password">
+    </mat-form-field>
+    <div class="checkbox">
+      <mat-checkbox>Remember Me</mat-checkbox>
+    </div>
+    <button class="dialog-login-button" mat-raised-button>Login</button>
+
+    <hr>
+    <div class="or-div text-center">or</div>
+    
+    <button mat-raised-button class="dialog-buttons">
+      <img src="https://www.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-facebook-2019-circle-512.png" class="dialog-button-icon" alt="">
+      Continue with Facebook
+    </button>
+    <button mat-raised-button class="dialog-buttons" style="background: #FCD55F;">
+      <img src="https://cdn.worldvectorlogo.com/logos/google-icon.svg" class="dialog-button-icon" alt="">
+      Continue with Google
+    </button>
+    
+    <div class="text-center">No Account? Sign up <a href="" [routerLink]="['/signup']" [mat-dialog-close]="true" >here</a></div> 
+  </div>
+</mat-dialog-content>
+
