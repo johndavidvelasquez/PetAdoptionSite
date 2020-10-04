@@ -8,7 +8,7 @@
 <div class="container" style="margin-top:20px;">
     <mat-card fxFlex="500px" fxFlex.xs="100%">
         <mat-card-title>Register</mat-card-title>
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+        <form [formGroup]="formGroup">
         <mat-card-content>
             
             <mat-card-subtitle> Personal Information</mat-card-subtitle>
@@ -16,21 +16,21 @@
                 <p>
                   <mat-form-field appearance="outline" class="form-element">
                     <mat-label>First Name</mat-label>
-                    <input matInput placeholder="First Name" formControlName="firstName">
+                    <input matInput placeholder="First Name" formControlName="Firstname">
                   </mat-form-field>
                 </p>
                 
                 <p>
                     <mat-form-field appearance="outline" class="form-element">
                       <mat-label>Last Name</mat-label>
-                      <input matInput placeholder="Last Name" formControlName="lastName">
+                      <input matInput placeholder="Last Name" formControlName="Lastname">
                     </mat-form-field>
                 </p>
                 
                 <p>
                     <mat-form-field appearance="outline" class="form-element">
                       <mat-label>Contact Number</mat-label>
-                      <input matInput placeholder="Contact Number" formControlName="contactNumber">
+                      <input matInput placeholder="Contact Number" formControlName="MobileNumber">
                     </mat-form-field>
                 </p>
 
@@ -46,7 +46,7 @@
                 </p>
 
                 <p>
-                  <mat-form-field appearance="outline" class="form-element">
+                  <mat-form-field appearance="outline" class="form-element" >
                     <mat-label>City/Municipality</mat-label>
                     <mat-select formControlName="city">
                       <mat-option value="option" *ngFor="let opt of citiesData" [value]="opt.name">
@@ -61,15 +61,15 @@
 
                 <p>
                     <mat-form-field appearance="outline" class="form-element">
-                      <mat-label>Username</mat-label>
-                      <input matInput placeholder="Username" formControlName="userName">
+                      <mat-label>Email</mat-label>
+                      <input matInput placeholder="Email" formControlName="Email">
                     </mat-form-field>
                 </p>
 
                 <p>
                     <mat-form-field appearance="outline" class="form-element">
                       <mat-label>Password</mat-label>
-                      <input type="password" matInput placeholder="Password" formControlName="password">
+                      <input type="password" matInput placeholder="Password" formControlName="Password">
                     </mat-form-field>
                 </p>
 
@@ -82,7 +82,7 @@
             
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit" class="button">Submit Form</button>
+            <button mat-raised-button color="primary" (click)="mapUser(formGroup.value);onSubmit(postData)" type="submit" class="button">Submit Form</button>
         </mat-card-actions>
         </form>
       </mat-card>

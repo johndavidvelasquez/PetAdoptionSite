@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 namespace PetAdoptionSite.Models
 {
@@ -9,10 +8,7 @@ namespace PetAdoptionSite.Models
     {
         public PetAdoptionSiteContext()
         {
-            
         }
-
-        public IConfiguration Configuration { get; }
 
         public PetAdoptionSiteContext(DbContextOptions<PetAdoptionSiteContext> options)
             : base(options)
@@ -29,7 +25,7 @@ namespace PetAdoptionSite.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Configuration.GetConnectionString("PetAdoptionSite"));
+                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=PetAdoptionSite;Trusted_Connection=True;");
             }
         }
 
@@ -88,6 +84,10 @@ namespace PetAdoptionSite.Models
 
                 entity.Property(e => e.Description).HasMaxLength(1000);
 
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
                 entity.Property(e => e.FirstName)
                     .IsRequired()
                     .HasMaxLength(100);
@@ -101,6 +101,10 @@ namespace PetAdoptionSite.Models
                 entity.Property(e => e.MobileNumber)
                     .IsRequired()
                     .HasMaxLength(20);
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.UpdatedOn)
                     .HasColumnType("datetime")

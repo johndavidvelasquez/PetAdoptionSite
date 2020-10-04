@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using PetAdoptionSite.Models;
+using System.IdentityModel.Tokens.Jwt;
+
 
 namespace PetAdoptionSite
 {
@@ -32,6 +34,8 @@ namespace PetAdoptionSite
 
             services.AddDbContext<PetAdoptionSiteContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("PetAdoptionSite")));
+
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
